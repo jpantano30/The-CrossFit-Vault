@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login</h1>
+    
+    <form action="/users/login" method="POST">
+        <input type="text" placeholder="Username" name="username">
+        <br/>
+        <input type="password" placeholder="Password" name="password">
+        <br/>
+        <input type="submit" value="Login">
+    </form>
+
+    <a href="/users/">Create an Account</a>
+</body>
+</html>
+
+<!-- username: {type: String, required: true, unique: true},
+password: {type: String, required: true},
+profileImage: string,
+savedWorkouts: { type: mongoose.Schema.Types.ObjectId, ref: 'Workout' } -->

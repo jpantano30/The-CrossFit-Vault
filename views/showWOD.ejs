@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1><%=workout.name%></h1><br/>
+  <p><%=workout.description%></p><br/>
+  <p><%=workout.duration%></p>
+  <!-- change this to a star that you can click on and will turn yellow when favorited -->
+  <p>Add to Favorites</p>
+  <nav>
+    <a href="/workouts/<%=workout.id%>/edit">Edit</a>
+    <form action="/workouts/<%= workout._id%>?_method=DELETE" method="POST">
+      <input class="button" type="submit" value="Delete">
+    </form>
+  </nav>
+  <nav>
+    <!-- change this so i can add scores -->
+    <a href="/workouts/addScore">Add Score</a>
+    <!-- change this so i can view scores -->
+    <a href="/workouts/scores">View Scores</a>
+  </nav>
+
+
+  
+</body>
+</html>
