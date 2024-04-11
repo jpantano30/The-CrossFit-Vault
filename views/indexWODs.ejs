@@ -6,24 +6,24 @@
 
   <h1>WORKOUTS</h1>
 
-  <ul>
+  <ul class="catList">
     <% categories.forEach(function(category) { %>
       <li><a href="#" class="category-link" data-category="<%= category %>"><%= category %></a></li>
     <% }) %>
       <li><a href="#" id="showAll">Show All</a></li>
       <li><a href="#" id="showNone">Show None</a></li>
   </ul>
-  
-  <ul id="workoutList">
+  <div class="workout-cards">
     <% workouts.forEach(function(workout) { %>
-      <li class="workout-item" data-category="<%= workout.category %>">
-        <a href="/workouts/<%= workout._id %>">
-          <%= workout.name %>
-        </a>
-        <p><%= workout.description %></p>
-      </li>
+      <div class="card workout-item" data-category="<%= workout.category %>">
+        <div class="card-body">
+          <h2 class="card-title"><a href="/workouts/<%= workout._id %>"><%= workout.name %></a></h2>
+          <p class="card-text"><%= workout.description %></p>
+          <p class="card-text"><%= workout.duration %></p>
+        </div>
+      </div>
     <% }) %>
-  </ul>
+  </div>
   
   <nav>
     <a href="/workouts/new">Add New Workout</a>
