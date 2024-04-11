@@ -1,21 +1,36 @@
 <%- include('header.ejs') %>
-  <h1>WORKOUTS</h1>
+
   <nav>
     <a href="/searchWODs">Search Workouts</a>
   </nav>
-  <ul>
-    <% for(let i = 0; i < workouts.length; i++){ %>
-      <li>
-        <a href="/workouts/<%=workouts[i].id%>">
-          <%= workouts[i].name %>
-        </a>
-        <p><%=workouts[i].description %></p>
-      </li>
-    <% } %>
-  </ul>
 
+  <h1>WORKOUTS</h1>
+
+  <ul>
+    <% categories.forEach(function(category) { %>
+      <li><a href="#" class="category-link" data-category="<%= category %>"><%= category %></a></li>
+    <% }) %>
+      <li><a href="#" id="showAll">Show All</a></li>
+      <li><a href="#" id="showNone">Show None</a></li>
+  </ul>
+  
+  <ul id="workoutList">
+    <% workouts.forEach(function(workout) { %>
+      <li class="workout-item" data-category="<%= workout.category %>">
+        <a href="/workouts/<%= workout._id %>">
+          <%= workout.name %>
+        </a>
+        <p><%= workout.description %></p>
+      </li>
+    <% }) %>
+  </ul>
+  
   <nav>
     <a href="/workouts/new">Add New Workout</a>
   </nav>
+
+
+  <script src="/js/index.js"></script>
+
   <%- include('footer.ejs') %>
 

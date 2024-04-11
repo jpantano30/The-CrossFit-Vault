@@ -4,15 +4,27 @@ const Workout = require('../models/workouts.js')
 const workoutSeed = require('../seeds/workoutSeed.js')
 
 // get route - renders all workouts
+// router.get('/', async (req, res) => {
+//   const foundWorkouts = await Workout.find({})
+//   res.render('indexWODs.ejs', { workouts: foundWorkouts })
+// })
+
 router.get('/', async (req, res) => {
-  const foundWorkouts = await Workout.find({})
-  res.render('indexWODs.ejs', { workouts: foundWorkouts })
+  try {
+    const workouts = await Workout.find({})
+    const categories = [...new Set(workouts.map(workout => workout.category))]
+    res.render('indexWODs.ejs', { workouts, categories })
+  } catch (err) {
+    console.error('Failed to fetch workouts: ', err)
+    res.status(500).send('Error fetching workouts')
+  }
 })
 
 // new route - renders new form
 router.get('/new', (req, res) => {
   res.render('newWOD.ejs')
 })
+
 
 
 // seed route - adds workout data
