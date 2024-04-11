@@ -9,6 +9,7 @@ const mongoURI = process.env.MONGO_URI
 const PORT = process.env.PORT
 
 
+
 const isAuthenticated = (req, res, next) => {
   console.log(req.session.currentUser)
   if(req.session.currentUser){
@@ -33,6 +34,7 @@ app.use('/users', userController)
 app.use(isAuthenticated)
 const workoutsController = require('./controllers/workouts.js')
 app.use('/workouts', workoutsController)
+
 
 
 

@@ -1,5 +1,14 @@
 <%- include('header.ejs') %>
 
+<h1>Workout of the Day (WOD)</h1>
 
+<div>
+    <h2><%= workout.name %></h2>
+    <p>Description: <%= workout.description %></p>
+    <p>Category: <%= workout.category %></p>
+    <p>Duration: <%= workout.duration %></p>
+</div>
+
+<a href="/workouts/WOD">Generate Random Workout</a>
 
 <%- include('footer.ejs') %>

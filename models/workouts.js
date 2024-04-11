@@ -8,8 +8,11 @@ const workoutSchema = new mongoose.Schema({
   date: Date,
   score: String, 
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-  isFavorite: Boolean
+  isFavorite: Boolean,
+  random: { type: Number, default: Math.random() }
 })
+
+workoutSchema.index({ random: 1 })
 
 const Workout = mongoose.model('Workout', workoutSchema)
 

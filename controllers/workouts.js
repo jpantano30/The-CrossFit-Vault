@@ -20,6 +20,20 @@ router.get('/', async (req, res) => {
   }
 })
 
+router.get('/WOD', async (req, res) => {
+  try {
+    const randomWorkouts = await Workout.aggregate([{ $sample: { size: 1 } }])
+    if (randomWorkouts.length) {
+      res.render('WOD.ejs', { workout: randomWorkouts[0] })
+    } else {
+      res.status(404).send('No workouts found')
+    }
+  } catch (err) {
+    console.error('Failed to fetch a random workout:', err)
+    res.status(500).send('Error fetching a random workout')
+  }
+})
+
 // new route - renders new form
 router.get('/new', (req, res) => {
   res.render('newWOD.ejs')
