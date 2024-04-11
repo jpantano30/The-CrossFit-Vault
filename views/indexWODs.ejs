@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <nav>
-    <a href="#">Logo</a>
-    <a href="/workouts">Workouts</a>
-    <a href="/WOD">WOD</a>
-    <a href="/leaderboard">Leaderboard</a>
-    <a href="/searchScores">Search My Scores</a>
-    <!-- change "favorties" to a star icon -->
-    <a href="/favorties">Favorites</a>
-    <!-- change "profile" to link to image that person inserts when signing up or to default -->
-    <a href="/profile">Profile</a>
-  </nav>
+<%- include('header.ejs') %>
   <h1>WORKOUTS</h1>
   <nav>
     <a href="/searchWODs">Search Workouts</a>
@@ -35,10 +17,5 @@
   <nav>
     <a href="/workouts/new">Add New Workout</a>
   </nav>
-  <footer> 
-        <form action="/users/logout?_method=DELETE" method="POST">
-          <input type="submit" value="Logout">
-        </form>
-  </footer>
-</body>
-</html>
+  <%- include('footer.ejs') %>
+
