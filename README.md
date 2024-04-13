@@ -1,9 +1,5 @@
 # The-CrossFit-Vault
 
-deployed link
-https://the-crossfit-vault-cadc50ebd52d.herokuapp.com/workouts
-
-
 #### Technologies used: 👩‍💻
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
@@ -58,10 +54,15 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
 <details>
 <summary>Page View </summary>
 <img src="#" alt="Workout/index page preview image">
+<br>
 <img src="#" alt="show page preview image">
+<br>
 <img src="#" alt="edit page preview image">
+<br>
 <img src="#" alt="new page preview image">
+<br>
 <img src="#" alt="WOD page preview image">
+<br>
 <img src="#" alt="Search page preview image">
 </details>
 
@@ -87,19 +88,26 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
 #
 
 <details>
- <summary> 🎨 Wire Frames </summary>
-   <details> 
+<summary> 🎨 Wire Frames </summary>
+  <details> 
     <summary> ✏️ Workouts (index) Page</summary>
         <img src="/other/indexPage.png">
+  </details>
+  <details>
     <summary> ✏️ Search Workouts Page</summary>
         <img src="/other/searchworkouts.png">
+  </details>
+  <details>
     <summary> ✏️ Show Workout Page</summary>
         <img src="/other/showPage.png">
+  </details>
+  <details>
     <summary> ✏️ New Workout Page</summary>
         <img src="/other/newPage.png">
+  </details>
     <summary> ✏️ Edit Workout Page</summary>
         <img src="/other/editPage.png">
-   </details>
+  </details>
    <!-- <details>
       <summary> ✏️ Future Feature: </summary>
           <img src="/other">
