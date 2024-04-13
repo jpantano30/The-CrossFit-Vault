@@ -12,8 +12,6 @@ require('dotenv').config()
 //Port 
 const PORT = process.env.PORT
 
-
-
 // Database 
 const mongoURI = process.env.MONGODB_URI
 
