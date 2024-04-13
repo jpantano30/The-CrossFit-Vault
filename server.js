@@ -15,9 +15,9 @@ const PORT = process.env.PORT
 
 
 // Database 
-const MONGODB_URI = process.env.MONGODB_URI
+const mongoURI = process.env.MONGODB_URI
 
-mongoose.connect(MONGODB_URI)
+mongoose.connect(mongoURI)
 
 // ERROR/ SUCCESS
 db.on('error', console.error.bind(console, 'connection error:'))
