@@ -8,7 +8,6 @@ const bcrypt = require('bcrypt')
 const db = mongoose.connection
 require('dotenv').config()
 
-
 //Port 
 const PORT = process.env.PORT
 

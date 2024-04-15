@@ -2,11 +2,10 @@
   <h1><%=workout.name%></h1><br/>
   <p><%=workout.description%></p><br/>
   <p><%=workout.duration%></p>
-  <!-- change this to a star that you can click on and will turn yellow when favorited -->
-  <p>Add to Favorites</p>
+  <button id="favorite" title="add to favorites" data-workout-id="<%= workout.id %>">&#9733;</button>
   <nav>
     <a href="/workouts/<%=workout.id%>/edit">Edit</a>
-    <form action="/workouts/<%= workout._id%>?_method=DELETE" method="POST">
+    <form action="/workouts/<%= workout.id%>?_method=DELETE" method="POST">
       <input class="button" type="submit" value="Delete">
     </form>
   </nav>
@@ -17,5 +16,5 @@
     <a href="/workouts/scores">View Scores</a>
   </nav>
 
-
+  <script src="/js/show.js"></script>
   <%- include('footer.ejs') %>

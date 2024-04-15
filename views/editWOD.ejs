@@ -1,5 +1,19 @@
 <%- include('header.ejs') %>
-
-
-
-<%- include('footer.ejs') %>
+  <h1>Edit Workout</h1>
+  <form action="/workouts" method="POST">
+    Name: <input type="text" name="name" value="<%=workout.name%>"><br/> 
+    Description: <input type="text" name="description" value="<%=workout.description%>"><br/> 
+    Category: <select name="category" id="workoutCategories" value="<%=workout.category%>">
+      <option value="The Girls">The Girls</option>
+      <option value="Hero WODs">Hero WODs</option>
+      <option value="Benchmarks">Benchmarks</option>
+      <option value="Metcon">Metcon</option>
+      <option value="Lifts">Lifts</option>
+      <option value="Gymnastics">Gymnastics</option>
+    </select><br/>
+    Duration: <input type="text" name="duration" value="<%=workout.duration%>"><br/>
+    Date: <input type="date" name="date" value="<%=workout.date%>"><br/>
+    Score: <input type="text" name="score"><br/>
+    <input type="submit" name="" value="Add Workout">
+  </form>
+  <%- include('footer.ejs') %>

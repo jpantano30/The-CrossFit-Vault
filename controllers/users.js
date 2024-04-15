@@ -3,6 +3,7 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/users.js')
 
+
 // get route - renders new users 
 router.get('/', (req, res) => {
   res.render('newUser.ejs')
@@ -23,8 +24,6 @@ router.post('/', async (req, res) => {
     })
     const savedUser = await newUser.save()
     console.log('User created: ', savedUser)
-    // req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
-    // console.log('after hash: ', req.body)
     res.redirect('/workouts')
   } catch (err) {
     console.log('ERROR WITH USER POST: ', err)
@@ -35,7 +34,7 @@ router.post('/', async (req, res) => {
 // post route - login a user
 router.post('/login', async (req, res) => {
   try {
-      // check if the user exists in our database 
+      // check if the user exists in db
       const foundUser = await User.findOne({username: req.body.username})
       console.log('Found user:', foundUser)
       // if found 
@@ -43,7 +42,10 @@ router.post('/login', async (req, res) => {
           const isAMatch = bcrypt.compareSync(req.body.password, foundUser.password)
           if(isAMatch) {
               console.log('login successful')
-              req.session.currentUser = foundUser
+              req.session.currentUser = {
+                id: foundUser.id,
+                username: foundUser.username
+              }
               res.redirect('/workouts')
           }
           else {
@@ -57,6 +59,23 @@ router.post('/login', async (req, res) => {
       res.status(500).send('An error has occurred, please try again.')
   }
 })
+// favorites page route 
+router.get('/favorites', async (req, res) => {
+  if (!req.session.currentUser) {
+    return res.redirect('/users/login') // send to log in if not logged in 
+  }
+  try {
+    const user = await User.findById(req.session.currentUser.id).populate('savedWorkouts') // find user and populate saved workouts/ favorites
+    if (!user) {
+      return res.status(404).send('User not found')
+    }
+    res.render('userFavorites.ejs', { user }) // render fav page with user data
+  } catch (error) {
+    console.error('Error rendering favorites page:', error)
+    res.status(500).send('Internal Server Error')
+  }
+})
+
 
 // deletes a user
 router.delete('/logout', (req, res) => {

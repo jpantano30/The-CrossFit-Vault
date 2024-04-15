@@ -45,3 +45,18 @@ body {
 .card-text {
   font-size: 20px;
 }
+
+
+#favorite {
+  font-size: 20px;
+  color: black;
+  border: none;
+  text-shadow: 0 0 5px black;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#favorite.favorited {
+  color: yellow;
+
+}

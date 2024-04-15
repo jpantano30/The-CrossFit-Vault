@@ -1,5 +1,5 @@
 document.querySelectorAll('.category-link').forEach(link => {
-  link.addEventListener('click', function(event) {
+  link.addEventListener('click', (event) => {
     event.preventDefault()
     const category = this.getAttribute('data-category')
     document.querySelectorAll('.workout-item').forEach(item => {
