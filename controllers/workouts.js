@@ -17,20 +17,36 @@ router.get('/', async (req, res) => {
   }
 })
 
+// search route - search workouts by name or category
+router.get('/searchWorkouts', async (req, res) => {
+  try {
+    const query = req.query.query // get query from search bar
+    const workouts = await Workout.find({ // search workout collection
+      $or: [ // logical OR operation
+        { name: { $regex: query, $options: 'i' } }, // operator for regex = regular expression searches. used to match workout name and category against the search query 
+        { category: { $regex: query, $options: 'i' } } // 'i' = makes the regex case-insensitive
+      ]
+    })
+    const categories = [...new Set(workouts.map(workout => workout.category))] // maps over array of workouts returned from db and pull out the category for each workout. // set = collection of unique values --> converts the array of categories into a set, and removes duplicates
+    res.render('indexWODs.ejs', { workouts, categories, query })
+  } catch (err) {
+    console.log('Failed to render search page: ', err)
+    res.status(500).send('Error rendering search page')
+  }
+})
+
 // random workout (workout of the day) Route
 router.get('/WOD', async (req, res) => {
   try {
     const randomWorkouts = await Workout.aggregate([{ $sample: { size: 1 } }]) // fetch one workout randomly
     // if (randomWorkouts.length) {
       res.render('WOD.ejs', { workout: randomWorkouts[0] })
-    // } else {
-    //   res.status(404).send('No workouts found')
-    // }
   } catch (err) {
     console.error('Failed to fetch a random workout:', err)
     res.status(500).send('Error fetching a random workout')
   }
 })
+
 
 // show route - shows details for a specific workout
 router.get('/:id', async (req, res) => {
@@ -114,9 +130,9 @@ router.post('/:id/favorite', async (req, res) => {
     }
     await user.save() // save users favotites changes to db
     res.send({ message: 'Favorite status updated', isFavorite })
-  } catch (error) {
-    console.error('Error updating favorite status:', error)
-    res.status(500).send({ error: 'Internal server error' })
+  } catch (err) {
+    console.log('Error updating favorite status:', err)
+    res.status(500).send(err)
   }
 })
 
@@ -131,9 +147,9 @@ router.get('/:id/favorite', async (req, res) => {
     }
     const isFavorite = user.savedWorkouts.includes(workoutId) // check if workout is favorited 
     res.send({ isFavorite }) // return fav status
-  } catch (error) {
-    console.error('Error fetching favorite status:', error)
-    res.status(500).send({ error: 'Internal server error' })
+  } catch (err) {
+    console.log('Error fetching favorite status:', err)
+    res.status(500).send(err)
   }
 })
 

@@ -1,5 +1,5 @@
 document.querySelectorAll('.category-link').forEach(link => {
-  link.addEventListener('click', (event) => {
+  link.addEventListener('click', function(event) {
     event.preventDefault()
     const category = this.getAttribute('data-category')
     document.querySelectorAll('.workout-item').forEach(item => {
@@ -12,12 +12,12 @@ document.querySelectorAll('.category-link').forEach(link => {
   })
 })
 
-document.getElementById('showAll').addEventListener('click', (event) => {
-  event.preventDefault()
-  document.querySelectorAll('.workout-item').forEach(item => {
-    item.style.display = 'block'
-  })
-})
+// document.getElementById('showAll').addEventListener('click', (event) => {
+//   event.preventDefault()
+//   document.querySelectorAll('.workout-item').forEach(item => {
+//     item.style.display = 'block'
+//   })
+// })
 
 document.getElementById('showNone').addEventListener('click', (event) => {
   event.preventDefault()
