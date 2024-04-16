@@ -12,13 +12,6 @@ document.querySelectorAll('.category-link').forEach(link => {
   })
 })
 
-// document.getElementById('showAll').addEventListener('click', (event) => {
-//   event.preventDefault()
-//   document.querySelectorAll('.workout-item').forEach(item => {
-//     item.style.display = 'block'
-//   })
-// })
-
 document.getElementById('showNone').addEventListener('click', (event) => {
   event.preventDefault()
   document.querySelectorAll('.workout-item').forEach(item => {

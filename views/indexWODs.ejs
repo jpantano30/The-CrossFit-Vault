@@ -5,6 +5,9 @@
   </nav> -->
 
   <h1>WORKOUTS</h1>
+  <nav>
+    <a href="/workouts/new">Add New Workout</a>
+  </nav>
 
 
   <form action="/workouts/searchWorkouts" method="GET">
@@ -12,16 +15,11 @@
     <button type="submit">Search</button>
     <a href="/workouts" class="button">Clear Search</a>
   </form>
-  <!-- <a href="/workouts">View All Workouts</a> -->
-  <nav>
-    <a href="/workouts/new">Add New Workout</a>
-  </nav>
 
   <ul class="catList">
     <% categories.forEach(function(category) { %>
       <li><a href="#" class="category-link" data-category="<%= category %>"><%= category %></a></li>
     <% }) %>
-      <!-- <li><a href="#" id="showAll">Show All</a></li> -->
       <li><a href="#" id="showNone">Show None</a></li>
   </ul>
   <div class="workout-cards">
@@ -35,7 +33,6 @@
       </div>
     <% }) %>
   </div>
-  
 
 
   <script src="/js/index.js"></script>
