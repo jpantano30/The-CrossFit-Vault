@@ -6,7 +6,7 @@ const workoutSchema = new mongoose.Schema({
   category: { type: String, required: true },
   duration: String,
   date: Date,
-  score: String, 
+  userScores: [{ user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, score: String, date: Date}], 
   user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   isFavorite: Boolean,
   random: { type: Number, default: Math.random() }

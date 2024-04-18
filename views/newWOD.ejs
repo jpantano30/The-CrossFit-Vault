@@ -1,19 +1,22 @@
 <%- include('header.ejs') %>
   <h1>New Workout</h1>
-  <form action="/workouts" method="POST">
-    Name: <input type="text" name="name"><br/> 
-    Description: <input type="text" name="description"><br/> 
-    Category: <select name="category" id="workoutCategories">
-      <option value="The Girls">The Girls</option>
-      <option value="Hero WODs">Hero WODs</option>
-      <option value="Benchmarks">Benchmarks</option>
-      <option value="Metcon">Metcon</option>
-      <option value="Lifts">Lifts</option>
-      <option value="Gymnastics">Gymnastics</option>
-    </select><br/>
-    Duration: <input type="text" name="duration"><br/>
-    Date: <input type="date" name="date"><br/>
-    Score: <input type="text" name="score"><br/>
-    <input type="submit" name="" value="Add Workout">
+  <form action="/workouts" method="POST" class="newForm">
+    Name: <input type="text" name="name" class="score" placeholder="Workout Name" style="text-align: center;"><br/> 
+    Description: <input type="text" name="description" class="score" placeholder="Workout" style="text-align: center;"><br/> 
+    <div class="wrapper">
+      Category: <select name="category" id="workoutCategories" class="score">
+        <option value="The Girls">The Girls</option>
+        <option value="Hero WODs">Hero WODs</option>
+        <option value="Benchmarks">Benchmarks</option>
+        <option value="Metcon">Metcon</option>
+        <option value="Lifts">Lifts</option>
+        <option value="Gymnastics">Gymnastics</option>
+      </select><br/>
+    </div>
+    Duration: <input type="text" name="duration" class="score" placeholder="Time Cap or other duration"><br/>
+    Date: <input type="date" name="date" class="score"><br/>
+    Score: <input type="text" name="score" class="score" placeholder="Time, weight, or rounds+reps"><br/>
+    <input type="submit" name="" value="Add Workout" class="button">
+    <br>
   </form>
   <%- include('footer.ejs') %>

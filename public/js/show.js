@@ -14,21 +14,18 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           body: JSON.stringify({ isFavorite: !isFavorited }) // Send the opposite of the current status
         })
-
-        const data = await response.json()
-
         if (response.ok) {
           // toggle the favorited class on the button based on the current state
           favoriteButton.classList.toggle('favorited')
-          console.log('Favorite status updated:', data.message)
+          console.log('Favorite status updated')
         } else {
-          console.error('Error updating favorite status:', data.error)
+          console.error('Error updating favorite status')
         }
-      } catch (error) {
-        console.error('Error:', error)
+      } catch (err) {
+        console.error('Error:', err)
       }
     })
   } else {
-    console.error('Favorite button not found')
+    console.log('Favorite button not found')
   }
 })

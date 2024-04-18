@@ -1,21 +1,17 @@
 <%- include('header.ejs') %>
 
-  <!-- <nav>
-    <a href="/workouts/searchWorkouts">Search Workouts</a>
-  </nav> -->
-
   <h1>WORKOUTS</h1>
   <nav>
-    <a href="/workouts/new">Add New Workout</a>
+    <a href="/workouts/new" class="addNewWO">Add New Workout</a>
   </nav>
 
 
-  <form action="/workouts/searchWorkouts" method="GET">
-    <input type="text" name="query" placeholder="Search workouts...">
-    <button type="submit">Search</button>
-    <a href="/workouts" class="button">Clear Search</a>
+  <form class="searchBar" action="/workouts/searchWorkouts" method="GET">
+    <input class="score" type="text" name="query" placeholder="Search workouts...">
+    <button type="submit">Search</button> <br>
+    <a href="/workouts" class="clear">Clear Search</a>
   </form>
-
+  <br>
   <ul class="catList">
     <% categories.forEach(function(category) { %>
       <li><a href="#" class="category-link" data-category="<%= category %>"><%= category %></a></li>
@@ -26,7 +22,7 @@
     <% workouts.forEach(function(workout) { %>
       <div class="card workout-item" data-category="<%= workout.category %>">
         <div class="card-body">
-          <h2 class="card-title"><a href="/workouts/<%= workout._id %>"><%= workout.name %></a></h2>
+          <h2 class="card-title"><a href="/workouts/<%= workout._id %>" class="workoutName"><%= workout.name %></a></h2>
           <p class="card-text"><%= workout.description %></p>
           <p class="card-text"><%= workout.duration %></p>
         </div>

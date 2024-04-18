@@ -1,5 +1,10 @@
 body {
   text-align: center;
+  background-color: black;
+  color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 .catList {
@@ -8,10 +13,23 @@ body {
   justify-content: space-evenly;
   list-style: none;
   padding: 0;
+  font-family: "good-times", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+#showNone {
+  font-family: "good-times", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 .category-link {
   font-size: 20px;
+}
+.category-link:hover {
+  text-decoration: underline;
 }
 
 .workout-cards {
@@ -23,7 +41,7 @@ body {
 .card {
   margin: 10px;
   width: 250px;
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -49,14 +67,237 @@ body {
 
 #favorite {
   font-size: 20px;
-  color: black;
+  color: white;
   border: none;
-  text-shadow: 0 0 5px black;
+  text-shadow: 0 0 5px white;
   background-color: transparent;
   cursor: pointer;
+  box-shadow: none;
+  transition: transform 0.1s ease-in-out;
+}
+
+#favorite:hover {
+  animation: shake 0.5s infinite alternate;
 }
 
 #favorite.favorited {
   color: yellow;
+}
 
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.mainNav {
+  font-family: "good-times-bad-times", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  margin: 0 5px 0 5px;
+}
+
+
+.logo {
+  float: left;
+  padding-right: 30px;
+}
+.innerLeftNav {
+  float: left;
+  padding: 0 10px 0 10px;
+}
+
+.innerRightNav {
+  float: right;
+  padding: 0 10px 0 10px;
+}
+
+h1 {
+  padding-top: 50px;
+  font-family: "good-times-bad-times", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+.WODName {
+  font-family: "good-times-bad-times", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  text-decoration: double underline;
+  color: red
+}
+
+.logout {
+  font-family: "good-times-bad-times", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  background: none;
+  border: none;
+  font-size: 25px;
+}
+.logout:hover {
+  color: white;
+  text-decoration: line-through;
+}
+a {
+  color: white;
+  text-decoration: none;
+  font-family: "good-times", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+a:hover {
+  color: red;
+}
+
+.addNewWO {
+  font-family: "good-times", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  padding: 10px
+}
+
+.searchBar {
+  margin-top: 10px;
+}
+
+.workoutName { 
+  font-family: "good-times-bad-times", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  
+}
+
+p {
+  font-family: "good-times", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+footer {
+  background-color: red;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-family: "good-times", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+button {
+  font-family: "good-times", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  border-radius: 4px;
+  background-color: red;
+  box-shadow: 10px 5px 5px red;
+  border: 1px solid black;
+  padding: 5px;
+}
+button:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+.button {
+  font-family: "good-times", sans-serif;
+  border-radius: 4px;
+  border: 2px solid red;
+  box-shadow: 10px 5px 5px rgb(242, 43, 43);
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+.button:hover {
+  background-color: white;
+  color: red;
+  box-shadow: 10px 5px 5px white;
+}
+
+.nonButtons {
+  border: 2px solid red;
+  background-color: red;
+  border-radius: 4px;
+  padding: 5px;
+}
+.nonButtons:hover {
+  background-color: white;
+  border: 2px solid white;
+}
+
+.score {
+  font-family: "good-times", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: black;
+  margin-bottom: 10px;
+  border: none;
+  padding: 5px;
+}
+
+.newForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: "good-times", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.wrapper select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid red;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.WOD {
+  margin: 0 40px;
+}
+.nameUScores{
+  font-family: "good-times-bad-times", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.favUl {
+  padding: 0;
+}
+.favDesStyle {
+  margin: 0 50px;
+}
+#removeScore{ 
+  margin-bottom: 40px;
+}
+
+.random{ 
+  position: relative;
+  top: 20px;
 }

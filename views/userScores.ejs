@@ -1,0 +1,23 @@
+<%- include('header.ejs') %>
+
+<h1>Your Scores</h1>
+
+<ul class="container">
+  <% user.savedWorkouts.filter(workout => workout.userScores.length > 0).forEach((workout) => { %>
+    <h2 class="nameUScores"><%= workout.name %></h2>
+    <ul class="container">
+      <% workout.userScores.forEach((score) => { %>
+        <% if (score.score) { %>
+          <li>
+            <%= score.user.username %>: <%= score.score %> - <%= moment(score.date).format('MMM DD YYYY') %>
+            <form action="/users/scores/<%= workout.id %>/<%= score.id %>?_method=DELETE" method="POST" id="removeScore">
+              <button type="submit" class="random">Remove Score</button>
+            </form>
+          </li>
+        <% } %>
+      <% }) %>
+    </ul>
+  <% }) %>
+</ul>
+
+<%- include('footer.ejs') %>

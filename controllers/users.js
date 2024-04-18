@@ -1,9 +1,10 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/users.js')
-
-
+const Workout = require('../models/workouts.js')
+const moment = require('moment')
 // get route - renders new users 
 router.get('/', (req, res) => {
   res.render('newUser.ejs')
@@ -42,13 +43,10 @@ router.post('/login', async (req, res) => {
           const isAMatch = bcrypt.compareSync(req.body.password, foundUser.password)
           if(isAMatch) {
               console.log('login successful')
-              req.session.currentUser = {
-                id: foundUser.id,
-                username: foundUser.username
+              req.session.currentUser = { id: foundUser.id, username: foundUser.username
               }
               res.redirect('/workouts')
-          }
-          else {
+          } else {
               res.status(401).send('Username or password does not match or does not exist.') 
           } 
       } else {
@@ -65,7 +63,7 @@ router.get('/favorites', async (req, res) => {
     return res.redirect('/users/login') // send to log in if not logged in 
   }
   try {
-    const user = await User.findById(req.session.currentUser.id).populate('savedWorkouts') // find user and populate saved workouts/ favorites
+    const user = await User.findById(req.session.currentUser.id).populate('favoritedWorkouts') // find user and populate saved workouts/ favorites
     if (!user) {
       return res.status(404).send('User not found')
     }
@@ -76,8 +74,53 @@ router.get('/favorites', async (req, res) => {
   }
 })
 
+// get route to view user scores page
+router.get('/scores', async (req, res) => {
+  try {
+    const userId = req.session.currentUser.id
+    if (!userId) {
+      return res.redirect('/users/login')
+    }
+    console.log('Type of userId:', typeof userId);
+    const workouts = await Workout.find({
+      'userScores.user': userId
+    }).populate('userScores.user', 'username')
 
-// deletes a user
+    const filteredWorkouts = workouts.filter(workout => workout.userScores.length > 0) // filter workouts that have user scores
+    res.render('userScores.ejs', { user: { savedWorkouts: filteredWorkouts }, moment: moment })
+  } catch (err) {
+    console.log('Error fetching scores: ', err)
+    res.status(500).send('Error fetching scores')
+  }
+})
+
+
+router.delete('/scores/:workoutId/:scoreId', async (req, res) => {
+  console.log('Workout ID:', req.params.workoutId);
+  console.log('Score ID:', req.params.scoreId)
+  try {
+      const workoutId = req.params.workoutId
+      const scoreId = req.params.scoreId
+      const workout = await Workout.findById(workoutId)
+      if (!workout) {
+        return res.status(404).send('Workout not found')
+      }
+      // Find the index of the score in the userScores array
+      const index = workout.userScores.findIndex(score => score.id.toString() === scoreId)
+      
+      // Remove the score from the userScores array
+      workout.userScores.splice(index, 1)
+      
+      await workout.save()
+  
+      res.redirect('/users/scores')
+    } catch (err) {
+      console.log('Error deleting score:', err)
+      res.status(500).send('Error deleting score')
+    }
+})
+
+
 router.delete('/logout', (req, res) => {
   req.session.destroy(err => {
       if(err) {
@@ -91,3 +134,4 @@ router.delete('/logout', (req, res) => {
 
 
 module.exports = router
+

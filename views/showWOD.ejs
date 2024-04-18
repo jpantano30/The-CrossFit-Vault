@@ -1,20 +1,27 @@
 <%- include('header.ejs') %>
-  <h1><%=workout.name%></h1><br/>
-  <p><%=workout.description%></p><br/>
-  <p><%=workout.duration%></p>
-  <button id="favorite" title="add to favorites" data-workout-id="<%= workout.id %>">&#9733;</button>
-  <nav>
-    <a href="/workouts/<%=workout.id%>/edit">Edit</a>
-    <form action="/workouts/<%= workout.id%>?_method=DELETE" method="POST">
-      <input class="button" type="submit" value="Delete">
-    </form>
-  </nav>
-  <nav>
-    <!-- change this so i can add scores -->
-    <a href="/workouts/addScore">Add Score</a>
-    <!-- change this so i can view scores -->
-    <a href="/workouts/scores">View Scores</a>
-  </nav>
+<h1><%=workout.name%></h1>
+<p><%=workout.description%></p>
+<p><%=workout.duration%></p>
+<button class="shake" id="favorite" title="add to favorites" data-workout-id="<%= workout.id %>">&#9733; Favorite</button>
+<br>
+<br>
+<a class="nonButtons" href="/workouts/<%=workout.id%>/edit">Edit</a>
+<br>
+<br>
+<form action="/workouts/<%= workout.id%>?_method=DELETE" method="POST">
+  <input class="button" type="submit" value="Delete">
+</form>
 
-  <script src="/js/show.js"></script>
-  <%- include('footer.ejs') %>
+<br>
+<nav>
+  <form action="/workouts/<%= workout.id %>/addScore" method="POST" id="addScoreForm">
+    <input class="score" type="text" name="score" placeholder="Enter score" required>
+    <input class="score" type="date" name="date" placeholder="Enter date" required>
+    <button type="submit">Add Score</button>
+  </form>
+  <br>
+  <a class="nonButtons" href="/workouts/<%= workout.id %>/scores">View Scores</a>
+</nav>
+
+<script src="/js/show.js"></script>
+<%- include('footer.ejs') %>

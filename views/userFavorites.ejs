@@ -2,18 +2,16 @@
 
 <div class="container">
   <h1>User Favorites</h1>
-  <ul>
-      <% user.savedWorkouts.forEach(workout => { %>
+  <ul class="favUl">
+      <% user.favoritedWorkouts.forEach(workout => { %>
       <li class="workout">
           <div class="workout-info">
               <h2><%= workout.name %></h2>
-              <p><%= workout.description %></p>
+              <p class="favDesStyle"><%= workout.description %></p>
               <p>Category: <%= workout.category %></p>
           </div>
           <div class="workout-actions">
               <form action="/workouts/<%= workout.id %>/favorite" method="POST">
-                  <input type="hidden" name="_method" value="PUT">
-                  <input type="hidden" name="isFavorite" value="false">
                   <button type="submit" class="btn">Remove Favorite</button>
               </form>
           </div>
@@ -21,5 +19,7 @@
       <% }) %>
   </ul>
 </div>
+<br>
+<br>
 
 <%- include('footer.ejs') %>

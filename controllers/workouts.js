@@ -5,6 +5,8 @@ const Workout = require('../models/workouts.js')
 const workoutSeed = require('../seeds/workoutSeed.js')
 const User = require('../models/users.js')
 
+const moment = require('moment')
+
 
 router.get('/', async (req, res) => {
   try {
@@ -46,6 +48,10 @@ router.get('/WOD', async (req, res) => {
     res.status(500).send('Error fetching a random workout')
   }
 })
+// new route - renders new form
+router.get('/new', (req, res) => {
+  res.render('newWOD.ejs')
+})
 
 
 // show route - shows details for a specific workout
@@ -75,10 +81,6 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
-// new route - renders new form
-router.get('/new', (req, res) => {
-  res.render('newWOD.ejs')
-})
 // post route - create a workout
 router.post('/', async (req, res) => {
   try {
@@ -111,25 +113,21 @@ router.post('/:id/favorite', async (req, res) => {
     const userId = req.session.currentUser.id // get user ID from session
     const user = await User.findById(userId) // find user by ID
 
-    if (!user) {
-      res.status(404).send({ error: 'User not found' }) // send error if user not found
-      return
-    }
     console.log("Received isFavorite: ", req.body.isFavorite)
 
     const isFavorite = req.body.isFavorite
     if (isFavorite) {
-      if (!user.savedWorkouts.includes(workoutId)) {
-        user.savedWorkouts.push(workoutId) // add to favorites if it has not been added already 
+      if (!user.favoritedWorkouts.includes(workoutId)) {
+        user.favoritedWorkouts.push(workoutId) // add to favorites if it has not been added already 
       }
     } else {
-      const index = user.savedWorkouts.indexOf(workoutId)
+      const index = user.favoritedWorkouts.indexOf(workoutId)
       if (index !== -1) {
-        user.savedWorkouts.splice(index, 1) // remove from favorites 
+        user.favoritedWorkouts.splice(index, 1) // remove from favorites 
       }
     }
     await user.save() // save users favotites changes to db
-    res.send({ message: 'Favorite status updated', isFavorite })
+    res.redirect('/users/favorites')
   } catch (err) {
     console.log('Error updating favorite status:', err)
     res.status(500).send(err)
@@ -145,7 +143,7 @@ router.get('/:id/favorite', async (req, res) => {
     if (!user) {
       return res.status(404).send({ error: 'User not found' }) // handle user not found
     }
-    const isFavorite = user.savedWorkouts.includes(workoutId) // check if workout is favorited 
+    const isFavorite = user.favoritedWorkouts.includes(workoutId) // check if workout is favorited 
     res.send({ isFavorite }) // return fav status
   } catch (err) {
     console.log('Error fetching favorite status:', err)
@@ -153,5 +151,61 @@ router.get('/:id/favorite', async (req, res) => {
   }
 })
 
+
+router.post('/:id/addScore', async (req, res) => {
+  const workoutId = req.params.id
+  const userId = req.session.currentUser.id
+  const inputDate = req.body.date
+  try {
+    const workout = await Workout.findById(workoutId)
+    const formattedDate = moment(inputDate).format('MMM DD YYYY') // used express moment to format the date 
+    // Add the user's score to the workout
+    workout.userScores.push({ user: userId, score: req.body.score, date: formattedDate })
+    await workout.save() 
+
+    res.redirect(`/workouts/${workoutId}`)
+  } catch (err) {
+    console.log('Error adding score:', err)
+    res.status(500).send('Error adding score')
+  }
+})
+
+// Route for viewing scores of a workout
+router.get('/:id/scores', async (req, res) => {
+  try {
+    const workoutId = req.params.id
+    const workout = await Workout.findById(workoutId).populate('userScores.user', 'username') // Populate the user reference to get usernames
+    if (!workout) {
+      return res.status(404).send('Workout not found')
+    }
+
+    res.render('scores.ejs', { workout: workout, moment: moment })
+  } catch (err) {
+    console.error('Error fetching scores:', err)
+    res.status(500).send('Error fetching scores')
+  }
+})
+
+// Route for deleting a score from a workout
+router.delete('/:workoutId/scores/:scoreId', async (req, res) => {
+  try {
+    const workoutId = req.params.workoutId
+    const scoreId = req.params.scoreId
+    const workout = await Workout.findById(workoutId)
+    if (!workout) {
+      return res.status(404).send('Workout not found')
+    }
+    // Find the index of the score in the userScores array
+    const index = workout.userScores.findIndex(score => score.id.toString() === scoreId)
+
+    // Remove the score from the userScores array
+    workout.userScores.splice(index, 1)
+    await workout.save()
+    res.redirect(`/workouts/${workoutId}/scores`)
+  } catch (err) {
+    console.log('Error deleting score:', err)
+    res.status(500).send('Error deleting score')
+  }
+})
 
 module.exports = router
