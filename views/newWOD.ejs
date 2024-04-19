@@ -1,10 +1,10 @@
 <%- include('header.ejs') %>
   <h1>New Workout</h1>
   <form action="/workouts" method="POST" class="newForm">
-    <p>Name: <input type="text" name="name" class="score" placeholder="Workout Name" style="text-align: center;"></p><br/> 
-    <p>Description: <input type="text" name="description" class="score" placeholder="Workout" style="text-align: center;"></p><br/> 
+    <p>Name: <input type="text" name="name" class="score" placeholder="Workout Name" style="text-align: center;" required></p><br/> 
+    <p>Description: <input type="text" name="description" class="score" placeholder="Workout" style="text-align: center;" required></p><br/> 
     <div class="wrapper">
-      <p>Category: <select name="category" id="workoutCategories" class="score">
+      <p>Category: <select name="category" id="workoutCategories" class="score" required>
           <option value="The Girls">The Girls</option>
           <option value="Hero WODs">Hero WODs</option>
           <option value="Benchmarks">Benchmarks</option>
