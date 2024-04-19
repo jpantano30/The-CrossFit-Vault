@@ -1,23 +1,23 @@
 <%- include('header.ejs') %>
 
 <div class="container">
-  <h1>User Favorites</h1>
-  <ul class="favUl">
-      <% user.favoritedWorkouts.forEach(workout => { %>
-      <li class="workout">
-          <div class="workout-info">
-              <h2><%= workout.name %></h2>
-              <p class="favDesStyle"><%= workout.description %></p>
-              <p>Category: <%= workout.category %></p>
-          </div>
-          <div class="workout-actions">
-              <form action="/workouts/<%= workout.id %>/favorite" method="POST">
-                  <button type="submit" class="btn">Remove Favorite</button>
-              </form>
-          </div>
-      </li>
-      <% }) %>
-  </ul>
+    <h1>User Favorites</h1>
+    <ul class="favUl">
+        <% user.favoritedWorkouts.forEach(workout => { %>
+        <li class="workout">
+            <div class="workout-info">
+                <h2><%= workout.name %></h2>
+                <p class="favDesStyle"><%= workout.description %></p>
+                <p>Category: <%= workout.category %></p>
+            </div>
+            <div class="workout-actions">
+                <form action="/workouts/<%= workout.id %>/favorite" method="POST">
+                    <button type="submit" class="btn">Remove Favorite</button>
+                </form>
+            </div>
+        </li>
+        <% }) %>
+    </ul>
 </div>
 <br>
 <br>

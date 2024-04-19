@@ -1,14 +1,14 @@
 <%- include('header.ejs') %>
     <h1>Login</h1>
     
-    <form action="/users/login" method="POST">
-        <input type="text" placeholder="Username" name="username">
-        <br/>
-        <input type="password" placeholder="Password" name="password">
-        <br/>
-        <input type="submit" value="Login">
+    <form action="/users/login" method="POST" class="loginForm">
+        <input type="text" placeholder="Username" name="username" class="loginInput">
+        <br>
+        <input type="password" placeholder="Password" name="password" class="loginInput">
+        <br>
+        <input type="submit" value="Login" class="button">
     </form>
 
-    <a href="/users/">Create an Account</a>
+    <a href="/users/" class="createAccount">Create an Account</a>
     <%- include('footer.ejs') %>
 

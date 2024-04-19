@@ -1,14 +1,16 @@
 <%- include('header.ejs') %>
     <h1>Create an Account</h1>
     
-    <form action="/users/" method="POST">
-        <input type="text" placeholder="Username" name="username">
-        <br/>
-        <input type="password" placeholder="Password" name="password">
-        <br/>
-        <!-- <input type="file" placeholder="Profile Picture url" name="profileImage"> -->
-        <input type="submit" value="Create Account">
+    <!-- the enctype is used to handle file uploads  -->
+    <form action="/users/" method="POST" class="loginForm">
+        <input type="text" placeholder="Username" name="username" class="loginInput">
+        <br>
+        <input type="password" placeholder="Password" name="password" class="loginInput">
+        <br>
+        <!-- <input type="file" placeholder="Profile Picture" name="profileImage">
+        <br> -->
+        <input type="submit" value="Create Account" class="button">
     </form>
 
-    <a href="/users/login">Login</a>
+    <a href="/users/login" class="createAccount">Login</a>
     <%- include('footer.ejs') %>

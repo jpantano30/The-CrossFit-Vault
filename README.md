@@ -132,8 +132,8 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
  <summary> Challenges: </summary>
  Descriptions of any unsolved problems or major hurdles that were overcome. 
  <ul>
-  <li>Only shows scores for workouts that are favorited </li>
-  <li> </li>
+  <li>Scores link in the nav bar is supposed to show only the scores for the user that is logged in and not for all users. </li>
+  <li></li>
   <li> </li>
   <li> </li>
   <li> </li>
@@ -160,7 +160,7 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
  <ul>
   <li> Fixes to above unsolved problems. </li>
   <li> Add a leaderboard page for the Workout of the Day. 1st change the WOD to 1 workout a day. </li>
-  <li> </li>
+  <li> Allow users to add a profile picture and have it show up in the top right corner of the nav bar. If no profile picture is added at sign up then the default image will be a silhouette image. (Use multer to add files.) </li>
   <li> </li>
   <li> </li>
   <li> </li>

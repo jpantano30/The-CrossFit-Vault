@@ -11,13 +11,17 @@
 </head>
 <body>
   <nav class="mainNav">
-    <a class="logo" href="#">Logo</a>
-    <a class="innerLeftNav" href="/workouts">Workouts</a>
-    <a class="innerLeftNav" href="/workouts/WOD">WOD</a>
+    <a href="#"><img src="/images/logo.png" class="logo"></a>
+    <div class="nav-left">
+      <a class="innerLeftNav" href="/workouts">Workouts</a>
+      <a class="innerLeftNav" href="/workouts/WOD">WOD</a>
+    </div>
     <!-- <a href="/leaderboard">Leaderboard</a> -->
-    <a class="innerRightNav"  href="/profile">Profile</a>
-    <a class="innerRightNav" href="/users/scores">Your Scores</a>
+    <!-- <a class="innerRightNav"  href="/profile"></a> -->
+          <!-- change "profile" to image that person inserts when signing up or to default -->  
+    <div class="nav-right">  
+      <a class="innerRightNav" href="/users/scores">Scores</a>
     <!-- change "favorties" to a star icon -->
-    <a class="innerRightNav"  href="/users/favorites">Favorites</a>
-    <!-- change "profile" to image that person inserts when signing up or to default -->
+      <a class="innerRightNav fav"  href="/users/favorites"> My Favorites</a>
+    </div>
   </nav>

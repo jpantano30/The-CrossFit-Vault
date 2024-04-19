@@ -53,6 +53,12 @@ router.get('/new', (req, res) => {
   res.render('newWOD.ejs')
 })
 
+// seed route - adds workout data
+router.get('/seed', async (req, res) => {
+  await Workout.deleteMany({})
+  await Workout.create(workoutSeed)
+  res.redirect('/workouts')
+})
 
 // show route - shows details for a specific workout
 router.get('/:id', async (req, res) => {
@@ -90,12 +96,6 @@ router.post('/', async (req, res) => {
     console.log('ERROR WITH WORKOUT POST: ', err)
     res.status(500).send(err)
   }
-})
-
-// seed route - adds workout data
-router.get('/seed', async (req, res) => {
-  await Workout.create(workoutSeed)
-  res.redirect('/workouts')
 })
 
 

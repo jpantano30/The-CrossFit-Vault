@@ -4,10 +4,11 @@
 <ul class="container">
   <% workout.userScores.forEach((score) => { %>
     <li>
-      <%= score.user.username %>: <%= score.score %> - <%= moment(score.date).format('MMM DD YYYY') %>
+      <%= score.user.username %>: <%= score.score %> - <%= moment(score.date).format('MMM DD YYYY') %> 
       <form action="/workouts/<%= workout.id %>/scores/<%= score.id %>?_method=DELETE" method="POST"> <br>
       <button type="submit">Remove Score</button>
       </form>
+      <br>
     </li>
   <% }) %>
 </ul>

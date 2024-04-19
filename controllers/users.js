@@ -76,12 +76,14 @@ router.get('/favorites', async (req, res) => {
 
 // get route to view user scores page
 router.get('/scores', async (req, res) => {
+  if (!req.session.currentUser) {
+    return res.redirect('/users/login') // send to log in if not logged in 
+  }
   try {
     const userId = req.session.currentUser.id
     if (!userId) {
       return res.redirect('/users/login')
     }
-    console.log('Type of userId:', typeof userId);
     const workouts = await Workout.find({
       'userScores.user': userId
     }).populate('userScores.user', 'username')

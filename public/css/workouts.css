@@ -16,6 +16,7 @@ body {
   font-family: "good-times", sans-serif;
   font-weight: 300;
   font-style: normal;
+  text-decoration: overline;
 }
 
 #showNone {
@@ -36,6 +37,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .card {
@@ -64,7 +66,6 @@ body {
   font-size: 20px;
 }
 
-
 #favorite {
   font-size: 20px;
   color: white;
@@ -83,7 +84,6 @@ body {
 #favorite.favorited {
   color: yellow;
 }
-
 
 @keyframes shake {
   0% {
@@ -107,29 +107,49 @@ body {
   font-family: "good-times-bad-times", sans-serif;
   font-weight: 900;
   font-style: normal;
-  margin: 0 5px 0 5px;
+  margin: 0 5px;
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
 
 .logo {
-  float: left;
-  padding-right: 30px;
+  /* float: left; */
+  /* padding-right: 30px; */
+  height: 100px;
+  width: auto;
+  /* flex: 0 1; */
+  margin-right: 20px;
 }
 .innerLeftNav {
-  float: left;
-  padding: 0 10px 0 10px;
+  /* padding: 0 10px 0 10px; */
+  margin-right: 10px;
 }
 
 .innerRightNav {
-  float: right;
-  padding: 0 10px 0 10px;
+  /* padding: 0 10px 0 10px; */
+  /* margin-left: 10px; */
+  margin-right: 20px;
+}
+.nav-left {
+  display: flex;
+  align-items: center;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
 h1 {
-  padding-top: 50px;
+  padding-top: 20px;
   font-family: "good-times-bad-times", sans-serif;
   font-weight: 900;
   font-style: normal;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
 }
 .WODName {
   font-family: "good-times-bad-times", sans-serif;
@@ -161,6 +181,7 @@ a {
 
 a:hover {
   color: red;
+  text-decoration: underline;
 }
 
 .addNewWO {
@@ -244,6 +265,20 @@ button:hover {
   border: 2px solid white;
 }
 
+.createAccount {
+  border: 2px solid red;
+  background-color: red;
+  border-radius: 4px;
+  padding: 2px;
+  position: relative;
+  top: 20px;
+}
+.createAccount:hover{
+  background-color: white;
+  color: red;
+  text-decoration: none;
+}
+
 .score {
   font-family: "good-times", sans-serif;
   font-weight: 300;
@@ -252,6 +287,8 @@ button:hover {
   margin-bottom: 10px;
   border: none;
   padding: 5px;
+  resize: both;
+  border: 1px solid red;
 }
 
 .newForm {
@@ -259,7 +296,7 @@ button:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 10px;
   font-family: "good-times", sans-serif;
   font-weight: 300;
   font-style: normal;
@@ -300,4 +337,19 @@ button:hover {
 .random{ 
   position: relative;
   top: 20px;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginInput {
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.bottom {
+  margin-bottom: 40px;
 }
