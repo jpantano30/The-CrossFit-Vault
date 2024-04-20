@@ -219,8 +219,8 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
     <li>Understand Heroku better and fix workout information for deployed page. Currently, it is still showing a category for lifting and lifts but I fixed this for local. </li>
     <li>Document any new features or changes made to the project for easier reference later on.</li>
     <li>Plan to implement a feature to allow users to create and customize workout plans. </li>
+    <li>Update error handling!</li>
     <!-- <li> </li>
-    <li> </li>
     <li> </li>
     <li> </li> -->
  </ul>
