@@ -25,8 +25,8 @@ router.get('/searchWorkouts', async (req, res) => {
     const query = req.query.query // get query from search bar
     const workouts = await Workout.find({ // search workout collection
       $or: [ // logical OR operation
-        { name: { $regex: query, $options: 'i' } }, // operator for regex = regular expression searches. used to match workout name and category against the search query 
-        { category: { $regex: query, $options: 'i' } } // 'i' = makes the regex case-insensitive
+        { name: { $regex: query, $options: 'i' } }, // mongoDB operator regex = regular expression searches. used to match workout name and category against the search query 
+        { category: { $regex: query, $options: 'i' } } // 'i' = makes the regex case-insensitive for easier matching of the search query
       ]
     })
     const categories = [...new Set(workouts.map(workout => workout.category))] // maps over array of workouts returned from db and pull out the category for each workout. // set = collection of unique values --> converts the array of categories into a set, and removes duplicates

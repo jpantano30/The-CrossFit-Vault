@@ -108,28 +108,22 @@ body {
   font-weight: 900;
   font-style: normal;
   margin: 0 5px;
-  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  /* float: left; */
-  /* padding-right: 30px; */
   height: 100px;
   width: auto;
-  /* flex: 0 1; */
   margin-right: 20px;
 }
 .innerLeftNav {
-  /* padding: 0 10px 0 10px; */
+
   margin-right: 10px;
 }
 
 .innerRightNav {
-  /* padding: 0 10px 0 10px; */
-  /* margin-left: 10px; */
   margin-right: 20px;
 }
 .nav-left {
@@ -287,7 +281,6 @@ button:hover {
   margin-bottom: 10px;
   border: none;
   padding: 5px;
-  resize: both;
   border: 1px solid red;
 }
 
@@ -353,3 +346,4 @@ button:hover {
 .bottom {
   margin-bottom: 40px;
 }
+
