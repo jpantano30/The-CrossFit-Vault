@@ -167,6 +167,7 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
   <li>Persisting favorites status: Currently, the favorites button does not retain the yellow highlight when a workout has already been favorited by a user. This issue is planned for resolution in future updates.</li>
   <li>Category management: I faced some difficulty in creating categories for each workout to display them properly on the workouts home/index page. I utilized another separate front-end JavaScript file to allow users to switch between categories. </li>
   <li>Consistancy: Some of the routes primarily utilize Mongoose methods, while others leverage JavaScript string and array methods. In the future, I aim to maintain consistency and possibly streamline the approach by standardizing the methods used across all routes.</li>
+  <li>Edit Route: Edit creates a new workout and does not just update the old on. This needs to be changed to properly update the existing workout.</li>
  </ul>
 </details>
 
