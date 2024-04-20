@@ -132,6 +132,7 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
     <summary> ✏️ New Workout Page</summary>
         <img src="/other/newPage.png">
   </details>
+  <details>
     <summary> ✏️ Edit Workout Page</summary>
         <img src="/other/editPage.png">
   </details>
