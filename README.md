@@ -207,6 +207,7 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
   <li>Profile picture integration: Allow users to upload a profile picture and display it in the top right corner of the navigation bar. If no profile picture is uploaded during signup, a default silhouette image will be used. Utilize multer to handle file uploads.</li>
   <li>User Interation: Implement functionality that allows users to like other users scores.</li>
   <li>Show Page Comments: Allow users to write comments under workouts on the show page for each individual workout so that all users can see. </li>
+  <li>Additional Favorite Button: Add the option to favorite the Workout of the Day/WOD from the WOD page and add scores on that page.</li>
  </ul>
 </details>
 
@@ -215,12 +216,13 @@ The CrossFit Vault is a web application designed to manage CrossFit workouts and
 <summary>Notes to Myself: </summary>
  Here are some reminders and thoughts for future reference:
  <ul>
-  <li>Document any new features or changes made to the project for easier reference later on.</li>
-  <li>Plan to implement a feature to allow users to create and customize workout plans. </li>
-  <!-- <li> </li>
-  <li> </li>
-  <li> </li>
-  <li> </li> -->
+    <li>Understand Heroku better and fix workout information for deployed page. Currently, it is still showing a category for lifting and lifts but I fixed this for local. </li>
+    <li>Document any new features or changes made to the project for easier reference later on.</li>
+    <li>Plan to implement a feature to allow users to create and customize workout plans. </li>
+    <!-- <li> </li>
+    <li> </li>
+    <li> </li>
+    <li> </li> -->
  </ul>
 </details>
 
