@@ -65,16 +65,6 @@ router.get('/:id', async (req, res) => {
   const foundWorkout = await Workout.findById(req.params.id)
   res.render('showWOD.ejs', { workout: foundWorkout })
 })
-// put route - update a specific workout
-router.put('/:id', async (req, res) => {
-  try {
-    const updatedWorkout = await Workout.findByIdAndUpdate(req.params.id, req.body, { new: true }) // update the workout and return new version
-    res.redirect('/workouts/' + updatedWorkout.id) // redirect to updated workouts page 
-  } catch (err) {
-    console.log('ERROR IN EDIT ROUTE (PUT): ', err)
-    res.status(500).send(err)
-  }
-})
 
 // delete route - delete a workout
 router.delete('/:id', async (req, res) => {
@@ -103,6 +93,17 @@ router.post('/', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
   const foundWorkout = await Workout.findById(req.params.id)
   res.render('editWOD.ejs', { workout: foundWorkout }) // render form with workout data
+})
+
+// put route - update a specific workout
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedWorkout = await Workout.findByIdAndUpdate(req.params.id, req.body, { new: true }) // update the workout and return new version
+    res.redirect('/workouts/' + updatedWorkout.id) // redirect to updated workouts page 
+  } catch (err) {
+    console.log('ERROR IN EDIT ROUTE (PUT): ', err)
+    res.status(500).send(err)
+  }
 })
 
 
